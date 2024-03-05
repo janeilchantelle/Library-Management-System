@@ -1,37 +1,55 @@
-Library Management System CLI Commands:
+***Library Management System CLI Commands:
 
-1. Adding a Book:
-   Command: addBook
-   Description: Adds a new book to the library.
-   Syntax: addBook <title> <author> <ISBN> <publisher> <numCopies>
-   Example: addBook "Title of the Book" "Author's Name" "123-456-789" "Publisher Name" 5
+- help: Display available commands
 
-2. Editing a Book:
-   Command: editBook
-   Description: Edits an existing book in the library.
-   Syntax: editBook <ISBN>
-   Example: editBook 123-456-789
+- search title <title>: Search for books by title
 
-3. Removing a Book:
-   Command: removeBook
-   Description: Removes a book from the library.
-   Syntax: removeBook <ISBN>
-   Example: removeBook 123-456-789
+- search author <author>: Search for books by author
 
-4. Adding an Author:
-   Command: addAuthor
-   Description: Adds a new author to the library.
-   Syntax: addAuthor <name> <dateOfBirth>
-   Example: addAuthor "Author's Name" "January 1, 1980"
+- search isbn <isbn>: Search for books by ISBN
 
-5. Editing an Author:
-   Command: editAuthor
-   Description: Edits an existing author in the library.
-   Syntax: editAuthor <name>
-   Example: editAuthor "Author's Name"
+- borrow <isbn> <patron_id> <num_copies>: Borrow a book
 
-6. Removing an Author:
-   Command: removeAuthor
-   Description: Removes an author from the library.
-   Syntax: removeAuthor <name>
-   Example: removeAuthor "Author's Nam
+- return <isbn> <patron_id> <num_copies>: Return a book
+
+- addbook <title> <author> <isbn> <publisher> <num_copies>: Add a book to the library
+
+- editbook <old_isbn> <new_title> <new_author> <new_publisher> <new_num_copies>: Edit a book
+
+- removebook <isbn>: Remove a book from the library
+
+- addauthor <name> <date_of_birth>: Add an author to the library
+
+- editauthor <old_name> <new_name> <new_date_of_birth>: Edit an author
+
+- removeauthor <name>: Remove an author from the library
+
+- addpatron <name> <address> <phone_number>: Add a patron to the library
+
+- editpatron <old_name> <new_name> <new_address> <new_phone_number>: Edit a patron
+
+- removepatron <name>: Remove a patron from the library
+
+- exit: Exit the Library Management System
+
+***Example Usage:
+
+Enter a command: search title February
+Books found by title:
+February
+
+Enter a command: search author Lisa Moore
+Books found by author:
+February
+
+Enter a command: search isbn 978-1550813370
+Book found by ISBN: February
+
+Enter a command: borrow 978-1550813370 Alice 1
+Book(s) successfully borrowed by patron Alice
+
+Enter a command: return 978-1550813370 Alice 1
+Book(s) successfully returned by patron Alice
+
+Enter a command: exit
+Exiting Library Management System.

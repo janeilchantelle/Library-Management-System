@@ -13,19 +13,27 @@ public class Library {
         this.patrons = patrons;
     }
 
-    // Method to add a new book to the library
-    public void addBook(Book book) {
-        books.add(book);
+    // Method to edit an existing book
+public void editBook(String oldIsbn, Book newBook) {
+    for (int i = 0; i < books.size(); i++) {
+        if (books.get(i).getISBN().equals(oldIsbn)) {
+            books.set(i, newBook);
+            return;
+        }
     }
+    System.out.println("Book with ISBN " + oldIsbn + " not found.");
+}
+
 
     // Method to edit an existing book
-    public void editBook(Book book) {
-        // Implementation to edit a book
+    public void editBook(Book oldBook, Book newBook) {
+        books.remove(oldBook);
+        books.add(newBook);
     }
 
     // Method to remove a book from the library
-    public void removeBook(Book book) {
-        books.remove(book);
+    public void removeBook(String isbn) {
+        books.removeIf(book -> book.getISBN().equals(isbn));
     }
 
     // Method to add a new author to the library
@@ -34,13 +42,14 @@ public class Library {
     }
 
     // Method to edit an existing author
-    public void editAuthor(Author author) {
-        // Implementation to edit an author
+    public void editAuthor(Author oldAuthor, Author newAuthor) {
+        authors.remove(oldAuthor);
+        authors.add(newAuthor);
     }
 
     // Method to remove an author from the library
-    public void removeAuthor(Author author) {
-        authors.remove(author);
+    public void removeAuthor(String name) {
+        authors.removeIf(author -> author.getName().equals(name));
     }
 
     // Method to add a new patron to the library
@@ -49,13 +58,14 @@ public class Library {
     }
 
     // Method to edit an existing patron
-    public void editPatron(Patron patron) {
-        // Implementation to edit a patron
+    public void editPatron(Patron oldPatron, Patron newPatron) {
+        patrons.remove(oldPatron);
+        patrons.add(newPatron);
     }
 
     // Method to remove a patron from the library
-    public void removePatron(Patron patron) {
-        patrons.remove(patron);
+    public void removePatron(String name) {
+        patrons.removeIf(patron -> patron.getName().equals(name));
     }
 
     // Method to search for books by title
