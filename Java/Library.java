@@ -18,6 +18,11 @@ public class Library {
         books.add(book);
     }
 
+    // Method to edit an existing book
+    public void editBook(Book book) {
+        // Implementation to edit a book
+    }
+
     // Method to remove a book from the library
     public void removeBook(Book book) {
         books.remove(book);
@@ -28,6 +33,11 @@ public class Library {
         authors.add(author);
     }
 
+    // Method to edit an existing author
+    public void editAuthor(Author author) {
+        // Implementation to edit an author
+    }
+
     // Method to remove an author from the library
     public void removeAuthor(Author author) {
         authors.remove(author);
@@ -36,6 +46,11 @@ public class Library {
     // Method to add a new patron to the library
     public void addPatron(Patron patron) {
         patrons.add(patron);
+    }
+
+    // Method to edit an existing patron
+    public void editPatron(Patron patron) {
+        // Implementation to edit a patron
     }
 
     // Method to remove a patron from the library
@@ -76,14 +91,28 @@ public class Library {
     }
 
     // Method to allow a patron to borrow a book
-    public void borrowBook(Patron patron, Book book, int numCopiesToBorrow) {
-        book.borrow(numCopiesToBorrow);
-        patron.borrowBook(book);
+    public String borrowBook(Patron patron, Book book, int numCopiesToBorrow) {
+        if (book.getNumCopiesAvailable() >= numCopiesToBorrow) {
+            book.borrow(numCopiesToBorrow);
+            return "Book(s) successfully borrowed by patron " + patron.getName();
+        } else {
+            return "Book not available for borrowing.";
+        }
     }
 
     // Method to allow a patron to return a book
-    public void returnBook(Patron patron, Book book, int numCopiesToReturn) {
+    public String returnBook(Patron patron, Book book, int numCopiesToReturn) {
         book.returnBook(numCopiesToReturn);
-        patron.returnBook(book);
+        return "Book(s) successfully returned by patron " + patron.getName();
+    }
+
+    // Method to find a patron by ID
+    public Patron findPatronById(String patronId) {
+        for (Patron patron : patrons) {
+            if (patron.getId().equals(patronId)) {
+                return patron;
+            }
+        }
+        return null;
     }
 }

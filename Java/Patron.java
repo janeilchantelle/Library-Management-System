@@ -15,16 +15,6 @@ public class Patron {
         this.borrowedBooks = new ArrayList<>();
     }
 
-    // Method to borrow a book
-    public void borrowBook(Book book) {
-        borrowedBooks.add(book);
-    }
-
-    // Method to return a book
-    public void returnBook(Book book) {
-        borrowedBooks.remove(book);
-    }
-
     // Getters and setters
     public String getName() {
         return name;
@@ -54,7 +44,18 @@ public class Patron {
         return borrowedBooks;
     }
 
-    public void setBorrowedBooks(List<Book> borrowedBooks) {
-        this.borrowedBooks = borrowedBooks;
+    // Method to borrow a book
+    public void borrowBook(Book book) {
+        borrowedBooks.add(book);
+    }
+
+    // Method to return a book
+    public void returnBook(Book book) {
+        borrowedBooks.remove(book);
+    }
+
+    public Object getId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
     }
 }
