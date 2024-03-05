@@ -25,6 +25,36 @@ public class Patron {
         borrowedBooks.remove(book);
     }
 
-    // Getter and setter methods
-    // Add here...
+    // Getters and setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void setBorrowedBooks(List<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
+    }
 }

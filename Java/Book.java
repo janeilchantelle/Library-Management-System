@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Book implements Borrowable {
     private String title;
     private Author author;
@@ -29,10 +26,56 @@ public class Book implements Borrowable {
         this.bookStatus = Status.AVAILABLE;
     }
 
-    // Getter and setter methods
-    // Add here...
+    // Getters and setters
+    public String getTitle() {
+        return title;
+    }
 
-    // Method to borrow a book
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getNumberOfCopies() {
+        return numberOfCopies;
+    }
+
+    public void setNumberOfCopies(int numberOfCopies) {
+        this.numberOfCopies = numberOfCopies;
+    }
+
+    public int getCopiesCheckedOut() {
+        return copiesCheckedOut;
+    }
+
+    public void setCopiesCheckedOut(int copiesCheckedOut) {
+        this.copiesCheckedOut = copiesCheckedOut;
+    }
+
+    // Implement methods from Borrowable interface
     @Override
     public void borrow(int numCopiesToBorrow) {
         if (bookStatus == Status.AVAILABLE && numCopiesToBorrow <= numberOfCopies - copiesCheckedOut) {
@@ -44,7 +87,6 @@ public class Book implements Borrowable {
         }
     }
 
-    // Method to return a book
     @Override
     public void returnBook(int numCopiesToReturn) {
         if (copiesCheckedOut >= numCopiesToReturn) {
