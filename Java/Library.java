@@ -43,6 +43,47 @@ public class Library {
         patrons.remove(patron);
     }
 
-    // Other methods for searching books, borrowing, returning, etc.
-    // Add here...
+    // Method to search for books by title
+    public List<Book> searchBooksByTitle(String title) {
+        List<Book> result = new ArrayList<>();
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    // Method to search for books by author
+    public List<Book> searchBooksByAuthor(Author author) {
+        List<Book> result = new ArrayList<>();
+        for (Book book : books) {
+            if (book.getAuthor().equals(author)) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    // Method to search for books by ISBN
+    public Book searchBooksByISBN(String ISBN) {
+        for (Book book : books) {
+            if (book.getISBN().equalsIgnoreCase(ISBN)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    // Method to allow a patron to borrow a book
+    public void borrowBook(Patron patron, Book book, int numCopiesToBorrow) {
+        book.borrow(numCopiesToBorrow);
+        patron.borrowBook(book);
+    }
+
+    // Method to allow a patron to return a book
+    public void returnBook(Patron patron, Book book, int numCopiesToReturn) {
+        book.returnBook(numCopiesToReturn);
+        patron.returnBook(book);
+    }
 }
