@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -130,5 +131,21 @@ public class LibraryCLI {
         } else {
             System.out.println("Patron not found.");
         }
+    }
+
+    public static void main(String[] args) {
+        // Create lists to hold books, authors, and patrons
+        List<Book> books = new ArrayList<>();
+        List<Author> authors = new ArrayList<>();
+        List<Patron> patrons = new ArrayList<>();
+
+        // Add authors, books, and patrons as needed
+
+        // Instantiate the Library object
+        Library library = new Library(books, authors, patrons);
+
+        // Instantiate the LibraryCLI object and start the CLI
+        LibraryCLI cli = new LibraryCLI(library);
+        cli.start();
     }
 }

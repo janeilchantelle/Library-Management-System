@@ -1,0 +1,37 @@
+Library Management System CLI Commands:
+
+1. Adding a Book:
+   Command: addBook
+   Description: Adds a new book to the library.
+   Syntax: addBook <title> <author> <ISBN> <publisher> <numCopies>
+   Example: addBook "Title of the Book" "Author's Name" "123-456-789" "Publisher Name" 5
+
+2. Editing a Book:
+   Command: editBook
+   Description: Edits an existing book in the library.
+   Syntax: editBook <ISBN>
+   Example: editBook 123-456-789
+
+3. Removing a Book:
+   Command: removeBook
+   Description: Removes a book from the library.
+   Syntax: removeBook <ISBN>
+   Example: removeBook 123-456-789
+
+4. Adding an Author:
+   Command: addAuthor
+   Description: Adds a new author to the library.
+   Syntax: addAuthor <name> <dateOfBirth>
+   Example: addAuthor "Author's Name" "January 1, 1980"
+
+5. Editing an Author:
+   Command: editAuthor
+   Description: Edits an existing author in the library.
+   Syntax: editAuthor <name>
+   Example: editAuthor "Author's Name"
+
+6. Removing an Author:
+   Command: removeAuthor
+   Description: Removes an author from the library.
+   Syntax: removeAuthor <name>
+   Example: removeAuthor "Author's Nam
