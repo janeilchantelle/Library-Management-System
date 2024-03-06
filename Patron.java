@@ -54,8 +54,8 @@ public class Patron {
         borrowedBooks.remove(book);
     }
 
-    public Object getId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    // Method to get the ID of the patron
+    public String getId() {
+        return name; // Returning the name as the ID
     }
 }

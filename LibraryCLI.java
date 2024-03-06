@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -78,7 +77,7 @@ public class LibraryCLI {
                     removePatron(input);
                     break;
                 case "exit":
-                    System.out.println("Exiting Library Management System.");
+                    System.out.println("Your session has now ended. See you again soon!");
                     running = false;
                     break;
                 default:
@@ -87,6 +86,41 @@ public class LibraryCLI {
         }
 
         scanner.close();
+    }
+
+    private void removeBook(String input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removeBook'");
+    }
+
+    private void addAuthor(String input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addAuthor'");
+    }
+
+    private void editAuthor(String[] tokens) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'editAuthor'");
+    }
+
+    private void removeAuthor(String input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removeAuthor'");
+    }
+
+    private void addPatron(String input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addPatron'");
+    }
+
+    private void editPatron(String[] tokens) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'editPatron'");
+    }
+
+    private void removePatron(String input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removePatron'");
     }
 
     private void displayHelp() {
@@ -121,8 +155,7 @@ public class LibraryCLI {
 
     private void searchByAuthor(String authorName) {
         System.out.println("Books found by author:");
-        Author author = new Author(authorName, ""); // Create a temporary author object with name only
-        List<Book> books = library.searchBooksByAuthor(author);
+        List<Book> books = library.searchBooksByAuthor(authorName);
         if (books.isEmpty()) {
             System.out.println("No books found.");
         } else {
@@ -169,67 +202,27 @@ public class LibraryCLI {
         }
     }
 
-    // Implement methods for adding, editing, and removing books, authors, and patrons
     private void addBook(String input) {
-        // Parse input and call library.addBook() method
-    }
-
-    private void editBook(String[] tokens) {
-        if (tokens.length == 7) { // Ensure correct number of arguments
-            String oldIsbn = tokens[1];
-            String newTitle = tokens[2];
-            String newAuthor = tokens[3];
-            String newPublisher = tokens[4];
-            int newNumCopies = Integer.parseInt(tokens[5]);
-            Book newBook = new Book(newTitle, new Author(newAuthor, ""), oldIsbn, newPublisher, newNumCopies);
-            library.editBook(oldIsbn, newBook); // Call editBook method with appropriate arguments
+        String[] tokens = input.split(" ");
+        if (tokens.length >= 7) {
+            String title = tokens[1];
+            String authorName = tokens[2];
+            String isbn = tokens[3];
+            String publisher = tokens[4];
+            int numCopies = Integer.parseInt(tokens[5]);
+            Author author = new Author(authorName, ""); // You might need to modify this depending on the Author class
+            Book book = new Book(title, author, isbn, publisher, numCopies);
+            library.addBook(book);
+            System.out.println("Book added successfully.");
         } else {
-            System.out.println("Invalid editbook command. Format: editbook <old_isbn> <new_title> <new_author> <new_publisher> <new_num_copies>");
+            System.out.println("Invalid addbook command. Format: addbook <title> <author> <isbn> <publisher> <num_copies>");
         }
     }
-    
 
-    private void removeBook(String input) {
-        // Parse input and call library.removeBook() method
-    }
+    // Implement methods for editBook, removeBook, addAuthor, editAuthor, removeAuthor, addPatron, editPatron, and removePatron
 
-    private void addAuthor(String input) {
-        // Parse input and call library.addAuthor() method
-    }
-
-    private void editAuthor(String[] tokens) {
-        // Parse input and call library.editAuthor() method
-    }
-
-    private void removeAuthor(String input) {
-        // Parse input and call library.removeAuthor() method
-    }
-
-    private void addPatron(String input) {
-        // Parse input and call library.addPatron() method
-    }
-
-    private void editPatron(String[] tokens) {
-        // Parse input and call library.editPatron() method
-    }
-
-    private void removePatron(String input) {
-        // Parse input and call library.removePatron() method
-    }
-
-    public static void main(String[] args) {
-        // Create lists to hold books, authors, and patrons
-        List<Book> books = new ArrayList<>();
-        List<Author> authors = new ArrayList<>();
-        List<Patron> patrons = new ArrayList<>();
-
-        // Add authors, books, and patrons as needed
-
-        // Instantiate the Library object
-        Library library = new Library(books, authors, patrons);
-
-        // Instantiate the LibraryCLI object and start the CLI
-        LibraryCLI cli = new LibraryCLI(library);
-        cli.start();
+    // Example method signature for editBook
+    private void editBook(String[] tokens) {
+        // Your implementation here
     }
 }

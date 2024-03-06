@@ -80,35 +80,11 @@ public class Main {
         patrons.add(patron9);
         patrons.add(patron10);
 
-        // Instantiate the Library object
+        // Instantiate the Library object with the initialized lists
         Library library = new Library(books, authors, patrons);
 
-        // Search for books by title
-        List<Book> searchResults = library.searchBooksByTitle("February");
-        System.out.println("Books found by title:");
-        for (Book book : searchResults) {
-            System.out.println(book.getTitle());
-        }
-
-        // Search for books by author
-        searchResults = library.searchBooksByAuthor(author7);
-        System.out.println("\nBooks found by author:");
-        for (Book book : searchResults) {
-            System.out.println(book.getTitle());
-        }
-
-        // Search for books by ISBN
-        Book foundBook = library.searchBooksByISBN("978-0670063831");
-        if (foundBook != null) {
-            System.out.println("\nBook found by ISBN: " + foundBook.getTitle());
-        } else {
-            System.out.println("\nBook not found by ISBN.");
-        }
-
-        // Borrow a book
-        library.borrowBook(patron1, book1, 1);
-
-        // Return a book
-        library.returnBook(patron1, book1, 1);
+        // Instantiate the LibraryCLI object and start the CLI
+        LibraryCLI cli = new LibraryCLI(library);
+        cli.start();
     }
 }

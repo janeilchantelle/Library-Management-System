@@ -13,22 +13,20 @@ public class Library {
         this.patrons = patrons;
     }
 
-    // Method to edit an existing book
-public void editBook(String oldIsbn, Book newBook) {
-    for (int i = 0; i < books.size(); i++) {
-        if (books.get(i).getISBN().equals(oldIsbn)) {
-            books.set(i, newBook);
-            return;
-        }
+    // Method to add a new book to the library
+    public void addBook(Book book) {
+        books.add(book);
     }
-    System.out.println("Book with ISBN " + oldIsbn + " not found.");
-}
-
 
     // Method to edit an existing book
-    public void editBook(Book oldBook, Book newBook) {
-        books.remove(oldBook);
-        books.add(newBook);
+    public void editBook(String oldIsbn, Book newBook) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getISBN().equals(oldIsbn)) {
+                books.set(i, newBook);
+                return;
+            }
+        }
+        System.out.println("Book with ISBN " + oldIsbn + " not found.");
     }
 
     // Method to remove a book from the library
@@ -79,16 +77,16 @@ public void editBook(String oldIsbn, Book newBook) {
         return result;
     }
 
-    // Method to search for books by author
-    public List<Book> searchBooksByAuthor(Author author) {
+    public List<Book> searchBooksByAuthor(String authorName) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
-            if (book.getAuthor().equals(author)) {
+            if (book.getAuthor().getName().trim().equalsIgnoreCase(authorName.trim())) {
                 result.add(book);
             }
         }
         return result;
     }
+    
 
     // Method to search for books by ISBN
     public Book searchBooksByISBN(String ISBN) {
