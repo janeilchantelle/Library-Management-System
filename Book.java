@@ -1,86 +1,90 @@
-public class Book {
+public class Book implements Borrowable {
     private String title;
     private Author author;
-    private String ISBN;
+    private String isbn;
     private String publisher;
     private int numCopies;
-    private int numCopiesBorrowed;
+    private Status status;
 
-    // Constructor
-    public Book(String title, Author author, String ISBN, String publisher, int numCopies) {
+    public Book(String title, Author author, String isbn, String publisher, int numCopies) {
         this.title = title;
         this.author = author;
-        this.ISBN = ISBN;
+        this.isbn = isbn;
         this.publisher = publisher;
         this.numCopies = numCopies;
-        this.numCopiesBorrowed = 0;
+        this.status = Status.AVAILABLE;
     }
 
-    // Getters and setters
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public String getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
     public String getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
     public int getNumCopies() {
         return numCopies;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public void setNumCopies(int numCopies) {
         this.numCopies = numCopies;
     }
 
-    public int getNumCopiesBorrowed() {
-        return numCopiesBorrowed;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
-    // Method to borrow copies of the book
+    @Override
     public void borrow(int numCopiesToBorrow) {
-        if (numCopiesBorrowed + numCopiesToBorrow <= numCopies) {
-            numCopiesBorrowed += numCopiesToBorrow;
+        if (numCopies >= numCopiesToBorrow) {
+            numCopies -= numCopiesToBorrow;
+            setStatus(Status.CHECKED_OUT);
+            System.out.println(numCopiesToBorrow + " copy/copies of \"" + getTitle() + "\" successfully borrowed.");
         } else {
             System.out.println("Not enough copies available to borrow.");
         }
     }
 
-    // Method to return copies of the book
+    @Override
     public void returnBook(int numCopiesToReturn) {
-        if (numCopiesBorrowed >= numCopiesToReturn) {
-            numCopiesBorrowed -= numCopiesToReturn;
-        } else {
-            System.out.println("Invalid number of copies to return.");
-        }
+        numCopies += numCopiesToReturn;
+        setStatus(Status.AVAILABLE);
+        System.out.println(numCopiesToReturn + " copy/copies of \"" + getTitle() + "\" successfully returned.");
     }
 
-    // Method to get the number of copies available for borrowing
-    public int getNumCopiesAvailable() {
-        return numCopies - numCopiesBorrowed;
+    public enum Status {
+        AVAILABLE,
+        CHECKED_OUT,
+        OVERDUE
     }
+    
 }

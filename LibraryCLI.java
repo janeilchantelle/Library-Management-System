@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Scanner;
 
 public class LibraryCLI {
@@ -89,140 +88,110 @@ public class LibraryCLI {
     }
 
     private void removeBook(String input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeBook'");
+        String isbn = input.substring(input.indexOf(" ") + 1).trim();
+        library.removeBook(isbn);
+        System.out.println("Book with ISBN " + isbn + " removed from the library.");
     }
 
     private void addAuthor(String input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addAuthor'");
+        String[] tokens = input.split(" ");
+        if (tokens.length >= 4) {
+            String name = tokens[1];
+            String dateOfBirth = tokens[2];
+            Author author = new Author(name, dateOfBirth);
+            library.addAuthor(author);
+            System.out.println("Author added successfully.");
+        } else {
+            System.out.println("Invalid addauthor command. Format: addauthor <name> <date_of_birth>");
+        }
     }
 
     private void editAuthor(String[] tokens) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editAuthor'");
+        if (tokens.length >= 4) {
+            String oldName = tokens[1];
+            String newName = tokens[2];
+            String newDateOfBirth = tokens[3];
+            Author oldAuthor = new Author(oldName, ""); // Modify this depending on the Author class
+            Author newAuthor = new Author(newName, newDateOfBirth);
+            library.editAuthor(oldAuthor, newAuthor);
+            System.out.println("Author edited successfully.");
+        } else {
+            System.out.println("Invalid editauthor command. Format: editauthor <old_name> <new_name> <new_date_of_birth>");
+        }
     }
 
     private void removeAuthor(String input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeAuthor'");
+        String name = input.substring(input.indexOf(" ") + 1).trim();
+        library.removeAuthor(name);
+        System.out.println("Author " + name + " removed from the library.");
     }
 
     private void addPatron(String input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addPatron'");
+        String[] tokens = input.split(" ");
+        if (tokens.length >= 5) {
+            String name = tokens[1];
+            String address = tokens[2];
+            String phoneNumber = tokens[3];
+            Patron patron = new Patron(name, address, phoneNumber);
+            library.addPatron(patron);
+            System.out.println("Patron added successfully.");
+        } else {
+            System.out.println("Invalid addpatron command. Format: addpatron <name> <address> <phone_number>");
+        }
     }
 
+    
+
     private void editPatron(String[] tokens) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editPatron'");
+        if (tokens.length >= 5) {
+            String oldName = tokens[1];
+            String newName = tokens[2];
+            String newAddress = tokens[3];
+            String newPhoneNumber = tokens[4];
+            Patron oldPatron = new Patron(oldName, "", ""); // Modify this depending on the Patron class
+            Patron newPatron = new Patron(newName, newAddress, newPhoneNumber);
+            library.editPatron(oldPatron, newPatron);
+            System.out.println("Patron edited successfully.");
+        } else {
+            System.out.println("Invalid editpatron command. Format: editpatron <old_name> <new_name> <new_address> <new_phone_number>");
+        }
     }
 
     private void removePatron(String input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removePatron'");
+        String name = input.substring(input.indexOf(" ") + 1).trim();
+        library.removePatron(name);
+        System.out.println("Patron " + name + " removed from the library.");
     }
 
     private void displayHelp() {
-        System.out.println("Available commands:");
-        System.out.println("- help: Display available commands");
-        System.out.println("- search title <title>: Search for books by title");
-        System.out.println("- search author <author>: Search for books by author");
-        System.out.println("- search isbn <isbn>: Search for books by ISBN");
-        System.out.println("- borrow <isbn> <patron_id> <num_copies>: Borrow a book");
-        System.out.println("- return <isbn> <patron_id> <num_copies>: Return a book");
-        System.out.println("- addbook <title> <author> <isbn> <publisher> <num_copies>: Add a book to the library");
-        System.out.println("- editbook <old_isbn> <new_title> <new_author> <new_publisher> <new_num_copies>: Edit a book");
-        System.out.println("- removebook <isbn>: Remove a book from the library");
-        System.out.println("- addauthor <name> <date_of_birth>: Add an author to the library");
-        System.out.println("- editauthor <old_name> <new_name> <new_date_of_birth>: Edit an author");
-        System.out.println("- removeauthor <name>: Remove an author from the library");
-        System.out.println("- addpatron <name> <address> <phone_number>: Add a patron to the library");
-        System.out.println("- editpatron <old_name> <new_name> <new_address> <new_phone_number>: Edit a patron");
-        System.out.println("- removepatron <name>: Remove a patron from the library");
-        System.out.println("- exit: Exit the Library Management System");
+        // Display help commands
     }
 
     private void searchByTitle(String title) {
-        System.out.println("Books found by title:");
-        List<Book> books = library.searchBooksByTitle(title);
-        if (books.isEmpty()) {
-            System.out.println("No books found.");
-        } else {
-            books.forEach(book -> System.out.println(book.getTitle()));
-        }
+        // Implement search by title
     }
 
     private void searchByAuthor(String authorName) {
-        System.out.println("Books found by author:");
-        List<Book> books = library.searchBooksByAuthor(authorName);
-        if (books.isEmpty()) {
-            System.out.println("No books found.");
-        } else {
-            books.forEach(book -> System.out.println(book.getTitle()));
-        }
+        // Implement search by author
     }
 
     private void searchByISBN(String isbn) {
-        Book book = library.searchBooksByISBN(isbn);
-        if (book != null) {
-            System.out.println("Book found by ISBN: " + book.getTitle());
-        } else {
-            System.out.println("Book not found by ISBN.");
-        }
+        // Implement search by ISBN
     }
 
     private void borrowBook(String isbn, String patronId, int numCopies) {
-        Patron patron = library.findPatronById(patronId);
-        if (patron != null) {
-            Book book = library.searchBooksByISBN(isbn);
-            if (book != null) {
-                String message = library.borrowBook(patron, book, numCopies);
-                System.out.println(message);
-            } else {
-                System.out.println("Book not found by ISBN.");
-            }
-        } else {
-            System.out.println("Patron not found.");
-        }
+        // Implement borrowing a book
     }
 
     private void returnBook(String isbn, String patronId, int numCopies) {
-        Patron patron = library.findPatronById(patronId);
-        if (patron != null) {
-            Book book = library.searchBooksByISBN(isbn);
-            if (book != null) {
-                String message = library.returnBook(patron, book, numCopies);
-                System.out.println(message);
-            } else {
-                System.out.println("Book not found by ISBN.");
-            }
-        } else {
-            System.out.println("Patron not found.");
-        }
+        // Implement returning a book
     }
 
     private void addBook(String input) {
-        String[] tokens = input.split(" ");
-        if (tokens.length >= 7) {
-            String title = tokens[1];
-            String authorName = tokens[2];
-            String isbn = tokens[3];
-            String publisher = tokens[4];
-            int numCopies = Integer.parseInt(tokens[5]);
-            Author author = new Author(authorName, ""); // You might need to modify this depending on the Author class
-            Book book = new Book(title, author, isbn, publisher, numCopies);
-            library.addBook(book);
-            System.out.println("Book added successfully.");
-        } else {
-            System.out.println("Invalid addbook command. Format: addbook <title> <author> <isbn> <publisher> <num_copies>");
-        }
+        // Implement adding a book
     }
 
-    // Implement methods for editBook, removeBook, addAuthor, editAuthor, removeAuthor, addPatron, editPatron, and removePatron
-
-    // Example method signature for editBook
     private void editBook(String[] tokens) {
-        // Your implementation here
+        // Implement editing a book
     }
 }

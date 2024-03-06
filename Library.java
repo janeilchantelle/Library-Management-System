@@ -21,7 +21,7 @@ public class Library {
     // Method to edit an existing book
     public void editBook(String oldIsbn, Book newBook) {
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getISBN().equals(oldIsbn)) {
+            if (books.get(i).getIsbn().equals(oldIsbn)) {
                 books.set(i, newBook);
                 return;
             }
@@ -31,7 +31,7 @@ public class Library {
 
     // Method to remove a book from the library
     public void removeBook(String isbn) {
-        books.removeIf(book -> book.getISBN().equals(isbn));
+        books.removeIf(book -> book.getIsbn().equals(isbn));
     }
 
     // Method to add a new author to the library
@@ -77,6 +77,7 @@ public class Library {
         return result;
     }
 
+    // Method to search for books by author
     public List<Book> searchBooksByAuthor(String authorName) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
@@ -86,12 +87,11 @@ public class Library {
         }
         return result;
     }
-    
 
     // Method to search for books by ISBN
-    public Book searchBooksByISBN(String ISBN) {
+    public Book searchBookByISBN(String isbn) {
         for (Book book : books) {
-            if (book.getISBN().equalsIgnoreCase(ISBN)) {
+            if (book.getIsbn().equalsIgnoreCase(isbn)) {
                 return book;
             }
         }
@@ -100,7 +100,7 @@ public class Library {
 
     // Method to allow a patron to borrow a book
     public String borrowBook(Patron patron, Book book, int numCopiesToBorrow) {
-        if (book.getNumCopiesAvailable() >= numCopiesToBorrow) {
+        if (book.getNumCopies() >= numCopiesToBorrow) {
             book.borrow(numCopiesToBorrow);
             return "Book(s) successfully borrowed by patron " + patron.getName();
         } else {
