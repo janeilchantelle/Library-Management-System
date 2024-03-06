@@ -52,7 +52,7 @@ public class LibraryCLI {
                     addBook(input);
                     break;
                 case "editbook":
-                    editBook(tokens); // Pass tokens array
+                    editBook(tokens);
                     break;
                 case "removebook":
                     removeBook(input);
@@ -61,7 +61,7 @@ public class LibraryCLI {
                     addAuthor(input);
                     break;
                 case "editauthor":
-                    editAuthor(tokens); // Pass tokens array
+                    editAuthor(tokens);
                     break;
                 case "removeauthor":
                     removeAuthor(input);
@@ -70,7 +70,7 @@ public class LibraryCLI {
                     addPatron(input);
                     break;
                 case "editpatron":
-                    editPatron(tokens); // Pass tokens array
+                    editPatron(tokens);
                     break;
                 case "removepatron":
                     removePatron(input);
@@ -111,7 +111,7 @@ public class LibraryCLI {
             String oldName = tokens[1];
             String newName = tokens[2];
             String newDateOfBirth = tokens[3];
-            Author oldAuthor = new Author(oldName, ""); // Modify this depending on the Author class
+            Author oldAuthor = new Author(oldName, "");
             Author newAuthor = new Author(newName, newDateOfBirth);
             library.editAuthor(oldAuthor, newAuthor);
             System.out.println("Author edited successfully.");
@@ -148,7 +148,7 @@ public class LibraryCLI {
             String newName = tokens[2];
             String newAddress = tokens[3];
             String newPhoneNumber = tokens[4];
-            Patron oldPatron = new Patron(oldName, "", ""); // Modify this depending on the Patron class
+            Patron oldPatron = new Patron(oldName, "", "");
             Patron newPatron = new Patron(newName, newAddress, newPhoneNumber);
             library.editPatron(oldPatron, newPatron);
             System.out.println("Patron edited successfully.");

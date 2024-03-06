@@ -56,6 +56,6 @@ public class Patron {
 
     // Method to get the ID of the patron
     public String getId() {
-        return name; // Returning the name as the ID
+        return name;
     }
 }
